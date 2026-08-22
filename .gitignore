@@ -1,0 +1,24 @@
+# Segredos
+.env
+*.env
+!.env.example
+
+data/*.duckdb
+data/*.duckdb.wal
+data/raw/*
+data/_sanitized/
+data/_download_tmp/
+# dbt
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+dbt/.user.yml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Prefect
+.prefect/
