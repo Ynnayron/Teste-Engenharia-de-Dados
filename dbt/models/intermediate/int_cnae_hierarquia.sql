@@ -14,15 +14,12 @@ with cnae as (
 
 hierarquia as (
     select
-        codigo                                              as cnae_subclasse,
-        descricao                                           as cnae_subclasse_desc,
-        lpad(cast(codigo as varchar), 7, '0')                as cnae_str,
+        codigo as cnae_subclasse,
+        descricao as cnae_subclasse_desc,
+        lpad(cast(codigo as varchar), 7, '0') as cnae_str,
         cast(substr(lpad(cast(codigo as varchar), 7, '0'), 1, 2) as integer) as cnae_divisao,
         cast(substr(lpad(cast(codigo as varchar), 7, '0'), 1, 3) as integer) as cnae_grupo,
         cast(substr(lpad(cast(codigo as varchar), 7, '0'), 1, 5) as integer) as cnae_classe,
-        -- Mapeamento simplificado de Seção a partir da faixa de Divisão
-        -- (mapeamento completo oficial tem 21 seções; aqui cobrimos as
-        -- divisões presentes na amostra + fallback para as demais).
         case
             when cast(substr(lpad(cast(codigo as varchar), 7, '0'), 1, 2) as integer) between 1 and 3 then 'A - AGROPECUARIA'
             when cast(substr(lpad(cast(codigo as varchar), 7, '0'), 1, 2) as integer) between 5 and 9 then 'B - INDUSTRIAS EXTRATIVAS'

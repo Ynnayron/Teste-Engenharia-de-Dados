@@ -11,7 +11,7 @@ with source as (
 renamed as (
     select
         try_cast(codigo as integer) as codigo,
-        trim(descricao)             as descricao
+        trim(descricao) as descricao
     from source
     where codigo is not null and trim(codigo) != ''
 )

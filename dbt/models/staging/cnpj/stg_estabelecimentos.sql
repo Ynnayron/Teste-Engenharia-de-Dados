@@ -10,17 +10,17 @@ with source as (
 
 renamed as (
     select
-        trim(cnpj_basico)                                          as cnpj_basico,
-        trim(cnpj_ordem)                                           as cnpj_ordem,
-        trim(cnpj_dv)                                              as cnpj_dv,
+        trim(cnpj_basico)  as cnpj_basico,
+        trim(cnpj_ordem)   as cnpj_ordem,
+        trim(cnpj_dv)      as cnpj_dv,
         {{ format_cnpj('cnpj_basico', 'cnpj_ordem', 'cnpj_dv') }}  as cnpj_completo,
         case identificador_matriz_filial
             when '1' then 'MATRIZ'
             when '2' then 'FILIAL'
             else 'NAO_INFORMADO'
-        end                                                        as tipo_estabelecimento,
-        nullif(trim(nome_fantasia), '')                            as nome_fantasia,
-        trim(situacao_cadastral)                                   as situacao_cadastral_cod,
+        end  as tipo_estabelecimento,
+        nullif(trim(nome_fantasia), '')  as nome_fantasia,
+        trim(situacao_cadastral)         as situacao_cadastral_cod,
         {{ situacao_cadastral_desc('situacao_cadastral') }}        as situacao_cadastral_desc,
         {{ parse_rfb_date('data_situacao_cadastral') }}            as data_situacao_cadastral,
         trim(motivo_situacao_cadastral)                            as motivo_situacao_cadastral,

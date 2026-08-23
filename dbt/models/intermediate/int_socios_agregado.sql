@@ -4,9 +4,6 @@
     )
 }}
 
--- Agrega o quadro societário no grão de empresa (cnpj_basico), preparando
--- a métrica "quantidade de sócios" consumida pela tabela fato.
-
 with socios as (
     select * from {{ ref('stg_socios') }}
 ),
