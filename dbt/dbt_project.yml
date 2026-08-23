@@ -1,0 +1,35 @@
+name: 'franq_cnpj'
+version: '1.0.0'
+config-version: 2
+
+profile: 'franq_cnpj'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+snapshot-paths: ["snapshots"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  # Data de corte usada nos modelos incrementais em ambientes sem coluna
+  # de atualização confiável na origem (ex: dados abertos RFB não trazem
+  # timestamp de carga -- usamos a data de referência do lote divulgado).
+  referencia_carga: '2024-01-01'
+
+models:
+  franq_cnpj:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      core:
+        +materialized: table
+        +schema: marts

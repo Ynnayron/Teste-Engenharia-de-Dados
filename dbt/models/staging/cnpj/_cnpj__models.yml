@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: stg_empresas
+    description: Dados cadastrais padronizados no nível de empresa (CNPJ básico).
+    columns:
+      - name: cnpj_basico
+        description: Chave da empresa (8 dígitos).
+        tests:
+          - unique
+          - not_null
+      - name: capital_social
+        description: Capital social declarado, convertido de texto BR (vírgula) para decimal.
+        tests:
+          - valor_positivo   # teste customizado (macro própria) -- regra de negócio
+      - name: porte_empresa_desc
+        tests:
+          - accepted_values:
+              values: ['NAO_INFORMADO', 'MICRO_EMPRESA', 'EMPRESA_PEQUENO_PORTE', 'DEMAIS']
+
+  - name: stg_estabelecimentos
+    description: Dados padronizados por estabelecimento (matriz/filial).
+    columns:
+      - name: cnpj_completo
+        description: CNPJ completo (14 dígitos) montado a partir das 3 partes.
+        tests:
+          - unique
+          - not_null
+      - name: cnpj_basico
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_empresas')
+                field: cnpj_basico
+      - name: tipo_estabelecimento
+        tests:
+          - accepted_values:
+              values: ['MATRIZ', 'FILIAL', 'NAO_INFORMADO']
+      - name: situacao_cadastral_desc
+        tests:
+          - accepted_values:
+              values: ['NULA', 'ATIVA', 'SUSPENSA', 'INAPTA', 'BAIXADA', 'NAO_INFORMADO']
+      - name: cnae_fiscal_principal
+        tests:
+          - relationships:
+              arguments:
+                to: ref('stg_cnae')
+                field: codigo
+              config:
+                severity: warn   # amostra sintética pode ter combinações fora do domínio reduzido de CNAEs
+
+  - name: stg_socios
+    description: Quadro societário padronizado.
+    columns:
+      - name: cnpj_basico
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_empresas')
+                field: cnpj_basico
+      - name: tipo_socio
+        tests:
+          - accepted_values:
+              values: ['PESSOA_JURIDICA', 'PESSOA_FISICA', 'ESTRANGEIRO', 'NAO_INFORMADO']
+
+  - name: stg_simples_nacional
+    description: Situação de opção pelo Simples Nacional / MEI, padronizada.
+    columns:
+      - name: cnpj_basico
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_cnae
+    description: Tabela de domínio de CNAEs.
+    columns:
+      - name: codigo
+        tests:
+          - unique
+          - not_null
+      - name: descricao
+        tests:
+          - not_null

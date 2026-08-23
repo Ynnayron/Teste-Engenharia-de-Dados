@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: >
+      Camada Bronze: dados brutos da Receita Federal (CNPJ), carregados
+      sem transformação pela camada de extração (Prefect task `load_raw`,
+      equivalente ao Airbyte em produção). Todas as colunas chegam como
+      VARCHAR, fiéis ao layout oficial.
+    tables:
+      - name: raw_empresas
+        description: Dados cadastrais no nível de empresa (CNPJ básico de 8 dígitos).
+        loaded_at_field: "date '{{ var(\"referencia_carga\") }}'"
+        columns:
+          - name: cnpj_basico
+            description: Identificador da empresa (8 primeiros dígitos do CNPJ).
+            tests:
+              - not_null
+        freshness:
+          warn_after: {count: 30, period: day}
+          error_after: {count: 60, period: day}
+
+      - name: raw_estabelecimentos
+        description: Dados por estabelecimento (matriz/filial), 1:N com empresas.
+        columns:
+          - name: cnpj_basico
+            tests:
+              - not_null
+
+      - name: raw_socios
+        description: Quadro societário por empresa.
+        columns:
+          - name: cnpj_basico
+            tests:
+              - not_null
+
+      - name: raw_simples
+        description: Situação de opção pelo Simples Nacional e MEI.
+        columns:
+          - name: cnpj_basico
+            tests:
+              - not_null
+
+      - name: raw_cnae
+        description: Tabela de domínio de códigos e descrições de CNAE.
+        columns:
+          - name: codigo
+            tests:
+              - unique
+              - not_null
