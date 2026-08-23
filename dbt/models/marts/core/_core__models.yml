@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: dim_empresa
+    description: Dimensão de empresa (grão 1 linha por cnpj_basico).
+    columns:
+      - name: cnpj_basico
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_cnae
+    description: Dimensão de hierarquia de CNAE (Seção > Divisão > Grupo > Classe > Subclasse).
+    columns:
+      - name: cnae_subclasse
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_empresas_ativas
+    description: >
+      Tabela fato consolidando métricas de empresas ATIVAS (grão: cnpj_basico).
+      Materialização incremental para simular ambiente de produção.
+    columns:
+      - name: cnpj_basico
+        tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_empresa')
+                field: cnpj_basico
+      - name: qtd_socios
+        tests:
+          - valor_positivo:   # regra de negócio: toda empresa ativa deveria ter >0 sócio
+              config:
+                severity: warn   # warn: a amostra sintética não garante 100% de cobertura societária
+      - name: cnae_fiscal_principal
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_cnae')
+                field: cnae_subclasse
+              config:
+                severity: warn
