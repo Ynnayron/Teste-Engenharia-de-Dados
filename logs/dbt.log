@@ -1,0 +1,58 @@
+[0m18:49:58.938711 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028007438380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002800743AFF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002800743B590>]}
+
+
+============================== 18:49:58.949100 | c1910c5f-0d25-453a-8ab5-7a50dbabe113 ==============================
+[0m18:49:58.949100 [info ] [MainThread]: Running with dbt=1.12.3
+[0m18:49:58.949100 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'maximum_seed_size_mib': '1', 'target_path': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Users\\proxx\\.dbt', 'invocation_command': 'dbt run --select int_cnae_hierarquia', 'hints_enabled': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'logs'}
+[0m18:49:58.949100 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Ynnayron\franq\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m18:49:58.953817 [debug] [MainThread]: Command `dbt run` failed at 18:49:58.949100 after 0.34 seconds
+[0m18:49:58.953817 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000028008428C80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000280095678C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000280074383E0>]}
+[0m18:49:58.953817 [debug] [MainThread]: Flushing usage events
+[0m18:50:00.378513 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:51:07.013563 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000127129CBFB0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000127133CE4E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001270F9F1070>]}
+
+
+============================== 18:51:07.018211 | 6b8be67f-a854-42c0-85be-97f888ca5613 ==============================
+[0m18:51:07.018211 [info ] [MainThread]: Running with dbt=1.12.3
+[0m18:51:07.023889 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'empty': 'False', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': 'C:\\Users\\proxx\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'invocation_command': 'dbt run --select int_cnae_hierarquia', 'log_path': 'C:\\Ynnayron\\franq\\logs'}
+[0m18:51:07.023889 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  Could not find profile named 'franq_cnpj'
+[0m18:51:07.028567 [debug] [MainThread]: Command `dbt run` failed at 18:51:07.028567 after 0.21 seconds
+[0m18:51:07.028567 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000012712B8EEA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000012712BBC5F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000012714B4A7E0>]}
+[0m18:51:07.028567 [debug] [MainThread]: Flushing usage events
+[0m18:51:07.783266 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:51:39.768541 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EFB3983F80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EFAFE1B560>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EFAFA39D60>]}
+
+
+============================== 18:51:39.773208 | d0a15ca2-70ab-4277-99dc-08f913b16466 ==============================
+[0m18:51:39.773208 [info ] [MainThread]: Running with dbt=1.12.3
+[0m18:51:39.773208 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'maximum_seed_size_mib': '1', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Ynnayron\\franq', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'use_colors': 'True', 'hints_enabled': 'True', 'invocation_command': 'dbt run --select int_cnae_hierarquia', 'use_experimental_parser': 'False', 'indirect_selection': 'eager', 'log_path': 'C:\\Ynnayron\\franq\\logs'}
+[0m18:51:39.780210 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.duckdb'
+[0m18:51:39.780210 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  Credentials in profile "franq_cnpj", target "dev" invalid: Runtime Error
+    Could not find adapter type duckdb!
+[0m18:51:39.780210 [debug] [MainThread]: Command `dbt run` failed at 18:51:39.780210 after 0.23 seconds
+[0m18:51:39.783920 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EFAF9993A0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EFB39BFC20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001EFB3C12150>]}
+[0m18:51:39.783920 [debug] [MainThread]: Flushing usage events
+[0m18:51:40.522615 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m19:32:04.907445 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A6C647ACC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A6C465E660>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A6C5F31C70>]}
+
+
+============================== 19:32:04.917708 | 4eefe069-8422-4c05-96d8-3ac0b4b1395b ==============================
+[0m19:32:04.917708 [info ] [MainThread]: Running with dbt=1.12.3
+[0m19:32:04.917708 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'no_print': 'None', 'static_parser': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': 'C:\\Users\\proxx\\.dbt', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'invocation_command': 'dbt test', 'hints_enabled': 'True', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_path': 'logs'}
+[0m19:32:04.917708 [error] [MainThread]: [[31mERROR[0m]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Ynnayron\franq\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m19:32:04.917708 [debug] [MainThread]: Command `dbt test` failed at 19:32:04.917708 after 0.25 seconds
+[0m19:32:04.917708 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A6C6A15370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A6C32C8A10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002A6C85C3D70>]}
+[0m19:32:04.917708 [debug] [MainThread]: Flushing usage events
+[0m19:32:05.947146 [debug] [MainThread]: An error was encountered while trying to flush usage events

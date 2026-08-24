@@ -12,7 +12,11 @@ models:
       - name: capital_social
         description: Capital social declarado, convertido de texto BR (vírgula) para decimal.
         tests:
-          - valor_positivo   # teste customizado (macro própria) -- regra de negócio
+          - valor_positivo:   # teste customizado (macro própria) -- regra de negócio
+              config:
+                severity: warn   # capital_social = 0 é comum e legítimo em dados reais da
+                                  # RFB (empresas recém-abertas, MEIs, certas naturezas
+                                  # jurídicas); não é erro de qualidade, por isso warn.
       - name: porte_empresa_desc
         tests:
           - accepted_values:
@@ -33,6 +37,13 @@ models:
               arguments:
                 to: ref('stg_empresas')
                 field: cnpj_basico
+              config:
+                severity: warn   # artefato da amostragem via load_raw.py --limit: cada
+                                  # arquivo (Empresas/Estabelecimentos/Socios) tem suas N
+                                  # primeiras linhas carregadas de forma independente, sem
+                                  # garantia de correlação por cnpj_basico entre eles. Ao
+                                  # carregar os arquivos completos (sem --limit) ou uma
+                                  # amostra correlacionada, isso deve voltar a error.
       - name: tipo_estabelecimento
         tests:
           - accepted_values:
@@ -48,7 +59,7 @@ models:
                 to: ref('stg_cnae')
                 field: codigo
               config:
-                severity: warn   # amostra sintética pode ter combinações fora do domínio reduzido de CNAEs
+                severity: warn   # amostra reduzida pode ter combinações fora do domínio de CNAEs carregado
 
   - name: stg_socios
     description: Quadro societário padronizado.
@@ -60,6 +71,8 @@ models:
               arguments:
                 to: ref('stg_empresas')
                 field: cnpj_basico
+              config:
+                severity: warn   # mesmo artefato de amostragem via --limit (ver stg_estabelecimentos acima)
       - name: tipo_socio
         tests:
           - accepted_values:
