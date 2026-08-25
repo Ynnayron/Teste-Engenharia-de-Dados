@@ -36,7 +36,6 @@ def sanitize_to_utf8(path: Path) -> Path:
             chunk = fin.read(CHUNK_SIZE)
             if not chunk:
                 break
-            # latin-1 nunca lança erro de decodificação (mapeamento 1:1 de byte)
             fout.write(chunk.decode("latin-1"))
 
     return out_path
