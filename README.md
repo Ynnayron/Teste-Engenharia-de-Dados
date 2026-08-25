@@ -5,7 +5,7 @@ Pipeline de dados de CNPJ (Receita Federal) construído com **dbt Core** +
 intermediate → marts), com testes de qualidade, macros customizadas e
 snapshot SCD2.
 
-Documentação de arquitetura cloud (FinOps/BigQuery): [`docs/proposta_finops_bigquery.docx`](docs/proposta_finops_bigquery.pdf)
+Documentação de arquitetura cloud (FinOps/BigQuery): [`docs/proposta_finops_bigquery.pdf`](docs/proposta_finops_bigquery.pdf)
 
 ## Arquitetura
 
