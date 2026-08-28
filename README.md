@@ -1,4 +1,4 @@
-# Teste Técnico Engenheiro de Dados (Franq)
+# Pipeline de dados de CNPJ
 
 Pipeline de dados de CNPJ (Receita Federal) construído com **dbt Core** +
 **Prefect** + **DuckDB**, seguindo arquitetura em camadas (staging →
